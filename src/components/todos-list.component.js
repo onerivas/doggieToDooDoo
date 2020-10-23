@@ -20,7 +20,7 @@ export default class TodosList extends Component {
   }
   componentDidMount() {
     console.log('inside todo list comp');
-    axios.get('http://localhost:4000/todos')
+    axios.get('https://doggie-to-doodoo-back-end.herokuapp.com/todos')
     .then((response) => {
       console.log(response.data);
       this.setState({ todos: response.data});

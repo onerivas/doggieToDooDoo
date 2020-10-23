@@ -41,13 +41,8 @@ export default class CreateTodo extends Component {
       todo_priority: this.state.todo_priority,
       todo_completed: this.state.todo_completed
     }
-    axios.post('http://localhost:4000/todos', newTodo).then( (response) => {
-      this.setState({
-        todo_description: '',
-        todo_responsible: '',
-        todo_priority: '',
-        todo_completed: false
-      })
+    axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/todos', newTodo).then( (response) => {
+      window.location = '/';
 
     })
   }

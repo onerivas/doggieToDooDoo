@@ -8,15 +8,15 @@ export default class EditTodo extends Component {
 
         this.state = {
           todo_id:'',
-            todo_description: '',
-            todo_responsible: '',
-            todo_priority: '',
-            todo_completed: false
+          todo_description: '',
+          todo_responsible: '',
+          todo_priority: '',
+          todo_completed: false
         }
     }
     componentDidMount = () => {
       // console.log(`http://localhost:4000/todos/${this.props.match.params.id}`);
-        axios.get('http://localhost:4000/todos/'+this.props.match.params.id)
+        axios.get('https://doggie-to-doodoo-back-end.herokuapp.com/todos/'+this.props.match.params.id)
             .then(response => {
               // console.log(response.data);
                 this.setState({
@@ -31,32 +31,32 @@ export default class EditTodo extends Component {
                 console.log(error);
             })
     }
-    onChangeTodoDescription = (e) => {
+    onChangeTodoDescription = (event) => {
        this.setState({
-           todo_description: e.target.value
+           todo_description: event.target.value
        });
    }
 
-   onChangeTodoResponsible = (e) => {
+   onChangeTodoResponsible = (event) => {
        this.setState({
-           todo_responsible: e.target.value
+           todo_responsible: event.target.value
        });
    }
 
-   onChangeTodoPriority = (e) => {
+   onChangeTodoPriority = (event) => {
        this.setState({
-           todo_priority: e.target.value
+           todo_priority: event.target.value
        });
    }
 
-   onChangeTodoCompleted = (e) => {
+   onChangeTodoCompleted = (event) => {
        this.setState({
            todo_completed: !this.state.todo_completed
        });
    }
 
-   onSubmit = (e) => {
-       e.preventDefault();
+   onSubmit = (event) => {
+       event.preventDefault();
        const obj = {
            todo_description: this.state.todo_description,
            todo_responsible: this.state.todo_responsible,
@@ -64,17 +64,17 @@ export default class EditTodo extends Component {
            todo_completed: this.state.todo_completed
        };
        console.log(obj);
-       axios.post('http://localhost:4000/todos/'+this.props.match.params.id, obj)
-           .then(res => console.log(res.data));
-
-       window.location = '/'
+       axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/todos/'+this.props.match.params.id, obj)
+           .then(response => window.location = '/')
    }
    deleteTodo = (event) => {
-     console.log(event.target.id);
-     // axios.delete(`/todo/${event.target.value}`)
-     // .then((response) => {
-     //   this.props.history.push('/');
-     // })
+     event.preventDefault();
+     console.log(this.state.todo_id);
+     console.log(`/todo/${this.state.todo_id}`);
+     axios.delete(`https://doggie-to-doodoo-back-end.herokuapp.com/todos/${this.state.todo_id}`)
+     .then((response) => {
+       window.location = '/'
+     })
    }
    render() {
        return (
