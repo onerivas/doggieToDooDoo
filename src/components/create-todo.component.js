@@ -7,41 +7,29 @@ export default class CreateTodo extends Component {
     super(props);
 
     this.state = {
-    todo_description: '',
-    todo_responsible: '',
-    todo_priority: '',
-    todo_completed: false
+      petName: '',
+      petTodos: [],
+      todo_description: '',
+      todo_completed: false
     }
+  }
+  onChangePetName = (event) => {
+    this.setState()
   }
   onChangeTodoDescription = (event) => {
     this.setState({
       todo_description: event.target.value
     });
   }
-  onChangeTodoResponsible = (event) => {
-    this.setState({
-      todo_responsible:event.target.value
-    });
-  }
-  onChangeTodoPriority = (event) => {
-    this.setState({
-      todo_priority: event.target.value
-    });
-  }
   onSubmit = (event) => {
     event.preventDefault()
-
     console.log(`Form submitted:`);
     console.log(`Todo Description: ${this.state.todo_description}`);
-    console.log(`Todo Responsible: ${this.state.todo_responsible}`);
-    console.log(`Todo Priority: ${this.state.todo_priority}`);
     const newTodo = {
       todo_description: this.state.todo_description,
-      todo_responsible: this.state.todo_responsible,
-      todo_priority: this.state.todo_priority,
       todo_completed: this.state.todo_completed
     }
-    axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/todos', newTodo).then( (response) => {
+    axios.post('https://localhost:4000/todos', newTodo).then( (response) => {
       window.location = '/';
 
     })
