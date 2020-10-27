@@ -22,7 +22,7 @@ class App extends Component {
                   <Link to="/" className="nav-link">Todos</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Create Todo</Link>
+                  <Link to="/create" className="nav-link">Create Pet</Link>
                 </li>
               </ul>
             </div>
@@ -31,7 +31,6 @@ class App extends Component {
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreatePet} />
-          <Route path="/create" component={CreateTodo} />
           <Route path="/add/:id" component={AddTodo} />
         </div>
       </Router>

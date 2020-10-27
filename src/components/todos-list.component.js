@@ -7,12 +7,24 @@ const Pet = props => (
       <div>{props.pet.petName}</div>
       {props.pet.petTodos.map((todo, index) => {
         return (
-        <div>
+        <div className='todo'>
           <div>
             {todo.todo_description}
           </div>
           <div>
-            <form id={index} onSubmit={ () => {props.deleteTodo(index)} }>
+            <div>
+              {todo.todo_completed ? 'true' : 'false' }
+            </div>
+            <div>
+              <button onClick={(event) => {
+                props.todoCompleted(event, props.pet.petTodos[index]._id)
+              }} className='btn btn-primary' type='button'> completed? </button>
+            </div>
+          </div>
+          <div>
+            <form id={index} onSubmit={ (event) => {props.deleteTodo(
+              props.pet._id, props.pet.petTodos[index]._id, event)} }>
+              <br/>
               <div className="form-group">
                 <input type="submit" value="X" className="btn btn-primary" />
               </div>
@@ -45,12 +57,38 @@ export default class TodosList extends Component {
       console.log(error);
     })
   }
-  deleteTodo = (index, event) => {
+  todoCompleted = (event, todo_id) => {
+    this.state.pets.map((currentPet, index) => {
+      currentPet.petTodos.map((todo, index) => {
+        if (todo._id === todo_id) {
+          console.log(currentPet._id);
+          console.log(todo.todo_completed);
+          todo.todo_completed = !todo.todo_completed
+          console.log(todo.todo_completed);
+          const updatedPet = currentPet
+          console.log(updatedPet);
+          axios.post(`http://localhost:4000/pets/${currentPet._id}`, updatedPet).then((response) => {
+            window.location = '/'
+          })
+        }
+      })
+    })
+  }
+  deleteTodo = (pet_id, todo_id, event) => {
     event.preventDefault();
-    const todoArr = [...this.state.pets.petTodos]
-    todoArr.splice(index, 1);
-    axios.post(`http://localhost:4000/pets/${this.state.pets.P}`)
-
+    this.state.pets.map((currentPet, index) => {
+      console.log(currentPet.petTodos);
+      currentPet.petTodos.map((todo, index) => {
+        if (todo._id === todo_id) {
+          currentPet.petTodos.splice(index, 1)
+          console.log(currentPet);
+          const updatedPet = currentPet
+          axios.post(`http://localhost:4000/pets/${pet_id}`, updatedPet).then((response) => {
+            window.location = '/';
+          })
+        }
+      })
+    })
   }
   PetsList = () => {
       return this.state.pets.map((currentPet, index) => {
@@ -68,7 +106,8 @@ export default class TodosList extends Component {
         //   return todoObj
         // })
         // console.log(todoObj);
-        return <Pet deleteTodo={this.deleteTodo} pet={currentPet} key={index} />;
+        return <Pet
+        todoCompleted={this.todoCompleted} deleteTodo={this.deleteTodo} pet={currentPet} key={index} />;
       })
   }
   render() {
