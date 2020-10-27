@@ -68,7 +68,10 @@ export default class TodosList extends Component {
           const updatedPet = currentPet
           console.log(updatedPet);
           axios.post(`http://localhost:4000/pets/${currentPet._id}`, updatedPet).then((response) => {
-            window.location = '/'
+            console.log(this.state.pets);
+            this.setState({
+              pets:this.state.pets
+            })
           })
         }
       })
@@ -84,7 +87,9 @@ export default class TodosList extends Component {
           console.log(currentPet);
           const updatedPet = currentPet
           axios.post(`http://localhost:4000/pets/${pet_id}`, updatedPet).then((response) => {
-            window.location = '/';
+            this.setState({
+              pets:this.state.pets
+            })
           })
         }
       })
