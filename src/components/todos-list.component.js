@@ -48,7 +48,8 @@ export default class TodosList extends Component {
   }
   componentDidMount = () => {
     // axios.get('https://doggie-to-doodoo-back-end.herokuapp.com/pets')
-    axios.get('http://localhost:4000/pets')
+    console.log(this.props.user_id);
+    axios.get('http://localhost:4000/pets', {params:{_id:this.props.user_id}})
     .then((response) => {
       console.log(response.data);
       this.setState({ pets: response.data});

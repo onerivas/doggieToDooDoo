@@ -65,6 +65,7 @@ export default class EditTodo extends Component {
 
      axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
        window.location = '/';
+
      })
 
    }
