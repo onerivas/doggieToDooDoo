@@ -3,41 +3,38 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Pet = props => (
-    <div>
-      <div>{props.pet.petName}</div>
+    <div className=' d-flex card w-75 text-center border-info my-1 '>
+      <div className='card-title card-header'>{props.pet.petName}</div>
       {props.pet.petTodos.map((todo, index) => {
         return (
-        <div className='todo'>
-          <div>
+          <div className=''>
+        <div className='d-flex flex-row justify-content-center align-items-center my-2'>
+          <div className='mx-2'>
             {todo.todo_description}
           </div>
           <div>
             <div>
-              {todo.todo_completed ? 'true' : 'false' }
-            </div>
-            <div>
               <button onClick={(event) => {
                 props.todoCompleted(event, props.pet.petTodos[index]._id)
-              }} className='btn btn-primary' type='button'> completed? </button>
+              }} className={todo.todo_completed ? "btn btn-sm btn-info mx-2" : "btn btn-sm btn-danger mx-2"} type='button'> <i class="fas fa-check"></i> </button>
             </div>
           </div>
           <div>
             <form id={index} onSubmit={ (event) => {props.deleteTodo(
               props.pet._id, props.pet.petTodos[index]._id, event)} }>
-              <br/>
-              <div className="form-group">
-                <input type="submit" value="X" className="btn btn-primary" />
-              </div>
+                <button type='submit' className='btn btn-sm btn-info shadow-none mx-2'><i class="fas fa-trash-alt"></i></button>
             </form>
           </div>
         </div>
+        </div>
+
 
       )}
       )}
-        <p>
-            <Link to={"/edit/"+props.pet._id}>Edit</Link>
-            <Link to={"/add/"+props.pet._id}>+</Link>
-        </p>
+      <div className=' align-items-end my-2'>
+            <Link className='btn-sm btn-info mx-1' to={"/edit/"+props.pet._id}><i class="fas fa-edit"></i></Link>
+            <Link className='btn-sm btn-info mx-1' to={"/add/"+props.pet._id}><i class="fas fa-plus"></i></Link>
+      </div>
     </div>
 )
 
@@ -119,8 +116,7 @@ export default class TodosList extends Component {
   render() {
     return (
       <div>
-        <h3>Pets List</h3>
-        <div>
+        <div className='row row-cols-md-3 '>
           { this.PetsList() }
         </div>
 

@@ -1,0 +1,27 @@
+*{
+  font-family: 'Coiny', cursive;
+}
+body {
+  background: url('/images/pexels-gilberto-reyes-825949.jpg');
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.3) !important;
+  color: white;
+}
+.nav-link, .navbar-brand {
+  color: #17a2b8;
+  font-family: 'Coiny', cursive;
+}
+@media (max-width: 768px){
+  .card {
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+  }
+}

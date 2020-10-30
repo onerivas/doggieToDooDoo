@@ -21,6 +21,14 @@ class App extends Component {
       user_id: ''
     }
   }
+  componentDidMount = () => {
+    localStorage.getItem('user_id');
+    this.setState({user_id:localStorage.user_id})
+    localStorage.getItem('token');
+    this.setState({token:localStorage.token})
+    console.log(this.state.user_id);
+
+  }
   onChangeUsername = (event) => {
     console.log(event.target.value);
     this.setState({
@@ -62,17 +70,18 @@ class App extends Component {
       token: '',
       user_id: ''
     })
+    localStorage.clear();
   }
   render() {
     return (
       <Router>
         <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <nav className="nav navbar nav-fill">
             <Link to="/" className="navbar-brand">DoggieToDooDoo</Link>
-            <div className="collpase navbar-collapse">
-              <ul className="navbar-nav mr-auto">
+            <div className="nav-fill">
+              <ul className="nav ">
               {this.state.user_id ? <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Create Pet</Link>
+                  <Link to="/create" className="nav-link">Add a Pet</Link>
                 </li> : ('')}
               { this.state.user_id ? <li className="navbar-item">
                   <Link onClick={this.logOut} className='nav-link'>Log-out </Link>
@@ -85,7 +94,7 @@ class App extends Component {
           { !this.state.user_id ? <Route path="/" render={(props) =>
             <LoginUser {...props} logOut={ this.logOut } login={ this.login } onChangeUsername={ this.onChangeUsername } onChangePassword={ this.onChangePassword }
             />} /> : ('')}
-          { this.state.user_id ? <Route path="/" render={(props) =>
+          { this.state.user_id ? <Route exact path="/" render={(props) =>
             <TodosList {...props} user_id={ this.state.user_id } token={ this.state.token }
           />} /> : ('') }
           <Route path="/edit/:id" render={(props) =>
