@@ -38,11 +38,11 @@ export default class CreateUser extends Component {
           <div className = 'form-group'>
             <label>E-mail: </label>
             <input type = 'text' className='form-control' value={this.state.usernameField} onChange={ this.onChangeUsername }/>
-            <label>Password: </label>
+            <label className='my-2'>Password: </label>
             <input type= 'password' className='form-control' value={this.state.passwordField} onChange={this.onChangePassword}/>
           </div>
           <div className='form-group'>
-            <input type='submit' value='Sign-up' className='btn btn-primary'/>
+            <input type='submit' value='Sign-up' className='btn btn-info'/>
           </div>
         </form>
       </div>

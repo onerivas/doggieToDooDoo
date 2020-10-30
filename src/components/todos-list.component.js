@@ -4,13 +4,13 @@ import axios from 'axios';
 
 const Pet = props => (
     <div className=' d-flex card w-75 text-center border-info my-1 '>
-      <div className='card-title card-header'>{props.pet.petName}</div>
+      <div className='card-title card-header'><h5 className='my-1'>{props.pet.petName}</h5></div>
       {props.pet.petTodos.map((todo, index) => {
         return (
           <div className=''>
         <div className='d-flex flex-row justify-content-center align-items-center my-2'>
           <div className='mx-2'>
-            {todo.todo_description}
+            <p>{todo.todo_description}</p>
           </div>
           <div>
             <div>
@@ -32,8 +32,8 @@ const Pet = props => (
       )}
       )}
       <div className=' align-items-end my-2'>
-            <Link className='btn-sm btn-info mx-1' to={"/edit/"+props.pet._id}><i class="fas fa-edit"></i></Link>
-            <Link className='btn-sm btn-info mx-1' to={"/add/"+props.pet._id}><i class="fas fa-plus"></i></Link>
+            <Link className='btn btn-sm btn-info mx-1' to={"/edit/"+props.pet._id}><i class="fas fa-edit"></i></Link>
+            <Link className='btn btn-sm btn-info mx-1' to={"/add/"+props.pet._id}><i class="fas fa-plus"></i></Link>
       </div>
     </div>
 )
@@ -115,7 +115,7 @@ export default class TodosList extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='list justify-content-center'>
         <div className='row row-cols-md-3 '>
           { this.PetsList() }
         </div>

@@ -64,7 +64,7 @@ render() {
           <input type='text' className='form-control' onChange={this.onChangeTodoDescription}/>
         </div>
         <div className='form-group'>
-          <input type='submit' value='+' className='btn btn-primary'/>
+          <button type='submit' className='btn btn-info'><i class="fas fa-plus"></i></button>
         </div>
       </form>
     </div>

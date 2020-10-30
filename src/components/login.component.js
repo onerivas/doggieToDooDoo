@@ -47,11 +47,11 @@ export default class Login extends Component {
           <div className = 'form-group'>
             <label>E-mail: </label>
             <input type = 'text' className='form-control' value={this.props.usernameField} onChange={ this.props.onChangeUsername }/>
-            <label>Password: </label>
+            <label className='my-2'>Password: </label>
             <input type= 'password' className='form-control' value={this.props.passwordField} onChange={this.props.onChangePassword}/>
           </div>
           <div className='form-group'>
-            <input type='submit' value='Log-in' className='btn btn-primary'/>
+            <input type='submit' value='Log-in' className='btn btn-info'/>
           </div>
         </form>
       </div>

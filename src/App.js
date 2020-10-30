@@ -77,7 +77,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="nav navbar nav-fill">
-            <Link to="/" className="navbar-brand">DoggieToDooDoo</Link>
+            <Link to="/" className="navbar-brand"><h3>DoggieToDooDoo<i class="fas fa-paw"></i></h3></Link>
             <div className="nav-fill">
               <ul className="nav ">
               {this.state.user_id ? <li className="navbar-item">

@@ -35,10 +35,10 @@ export default class CreatePet extends Component {
         <form onSubmit={ this.onSubmit }>
           <div className= " form-group " >
             <label>Pet Name: </label>
-            <input type = ' text ' className = ' form-control ' value = { this.state.petName } onChange = { this.onChangePetName }/>
+            <input type ='text' className = ' form-control ' value = { this.state.petName } onChange = { this.onChangePetName }/>
           </div>
           <div className="form-group">
-              <input type="submit" value="Create Pet" className="btn btn-primary" />
+              <input type="submit" value="Create Pet" className="btn btn-info" />
           </div>
         </form>
       </div>
