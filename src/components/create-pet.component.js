@@ -20,9 +20,14 @@ export default class CreatePet extends Component {
     console.log('Form submitted');
     const newPet = {
       petName: this.state.petName,
-      petTodos: this.state.petTodos
+      petTodos: this.state.petTodos,
+      user: this.props.user_id
     }
-    axios.post('http://localhost:4000/pets', newPet).then((response) => {
+    console.log(this.props.user_id);
+    console.log(newPet);
+    axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/pets', newPet)
+    // axios.post('http://localhost:4000/pets', newPet)
+    .then((response) => {
       window.location = '/';
     })
   }
@@ -32,10 +37,10 @@ export default class CreatePet extends Component {
         <form onSubmit={ this.onSubmit }>
           <div className= " form-group " >
             <label>Pet Name: </label>
-            <input type = ' text ' className = ' form-control ' value = { this.state.petName } onChange = { this.onChangePetName }/>
+            <input type ='text' className = ' form-control ' value = { this.state.petName } onChange = { this.onChangePetName }/>
           </div>
           <div className="form-group">
-              <input type="submit" value="Create Pet" className="btn btn-primary" />
+              <input type="submit" value="Create Pet" className="btn btn-info" />
           </div>
         </form>
       </div>

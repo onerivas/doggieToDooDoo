@@ -15,8 +15,8 @@ export default class EditTodo extends Component {
         }
     }
     componentDidMount = () => {
-      // console.log(`http://localhost:4000/todos/${this.props.match.params.id}`);
-        axios.get('http://localhost:4000/pets/'+this.props.match.params.id)
+        axios.get('https://doggie-to-doodoo-back-end.herokuapp.com/pets/'+this.props.match.params.id)
+        // axios.get('http://localhost:4000/pets/'+this.props.match.params.id)
             .then(response => {
               console.log(response.data);
                 this.setState({
@@ -66,7 +66,12 @@ export default class EditTodo extends Component {
      axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
        window.location = '/';
      })
-
+   }
+   deletePet = (event) => {
+     event.preventDefault();
+     axios.delete(`http://localhost:4000/pets/${this.props.match.params.id}`).then((response) => {
+       window.location = '/';
+     })
    }
    // onSubmit = (event) => {
    //     event.preventDefault();
@@ -106,15 +111,18 @@ export default class EditTodo extends Component {
                         onChange={this.onChangeTodoDescription}
                         />
                       <div className="form-group">
-                        <input type="submit" value="Update Todo" className="btn btn-primary" />
+                        <button type='submit' className='btn btn-sm btn-info  my-3'>Update</button>
                       </div>
                     </div>
                   </form>
                 )
               })}
+              <div>
+                <form onSubmit={this.deletePet} >
+                  <button type='submit' className='btn btn-sm btn-info my-3'>Remove Pet</button>
+                </form>
+              </div>
             </div>
-               <h3 align="center">Update Todo</h3>
-
            </div>
        )
    }

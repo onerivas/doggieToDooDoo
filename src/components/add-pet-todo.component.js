@@ -48,9 +48,12 @@ export default class AddPetTodo extends Component {
       petName: this.state.petName,
       petTodos: todoArr
     }
-    axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
+    axios.post(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
       window.location = '/';
     })
+    // axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
+    //   window.location = '/';
+    // })
 
   }
 
@@ -64,7 +67,7 @@ render() {
           <input type='text' className='form-control' onChange={this.onChangeTodoDescription}/>
         </div>
         <div className='form-group'>
-          <input type='submit' value='+' className='btn btn-primary'/>
+          <button type='submit' className='btn btn-info'><i class="fas fa-plus"></i></button>
         </div>
       </form>
     </div>

@@ -1,0 +1,96 @@
+*{
+  font-family: 'Coiny', cursive;
+
+}
+body {
+  background: url('/images/pexels-gilberto-reyes-825949.jpg');
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.contain {
+  position: relative;
+  min-height: 100vh;
+}
+.wrapper {
+  padding-bottom: 2.5rem ;
+}
+input[type=text], input[type=password]{
+  color: #17a2b8!important;
+}
+label {
+  color: #17a2b8;
+}
+.card {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #17a2b8!important;
+}
+.nav-link, .navbar-brand {
+  color: #17a2b8;
+  font-family: 'Coiny', cursive;
+}
+.nav-link:hover, .navbar-brand:hover {
+  color: #138496!important;;
+  font-family: 'Coiny', cursive;
+}
+p {
+  margin-bottom: 0!important;
+}
+
+.card {
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+}
+.intro {
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+  width: 75%;
+  color: #17a2b8;
+}
+input {
+  background-color: rgba(255,255,255,0.7)!important;
+}
+.card-header{
+  border-bottom: none!important;
+
+}
+/* @media (max-width: 768px){
+  .card {
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+  }
+} */
+
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem ;
+  display: flex;
+  left: 0px;
+  right: 0px;
+
+}
+ul{
+  display: flex;
+  justify-content: center;
+
+}
+
+li{
+  padding: .5em;
+  list-style-type:none;
+  color: #17a2b8!important;
+}
+li > a > i {
+  text-align: center;
+  color: #17a2b8!important;
+}
+li > a > i:hover {
+  text-align: center;
+  color: #dc3545!important;
+}
