@@ -48,9 +48,12 @@ export default class AddPetTodo extends Component {
       petName: this.state.petName,
       petTodos: todoArr
     }
-    axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
+    axios.post(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
       window.location = '/';
     })
+    // axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
+    //   window.location = '/';
+    // })
 
   }
 

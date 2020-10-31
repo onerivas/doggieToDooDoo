@@ -27,9 +27,12 @@ export default class CreateUser extends Component {
       email: this.state.usernameField,
       password: this.state.passwordField
     }
-    axios.post('http://localhost:4000/auth/signup', newUser).then((response) => {
+    axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/', newUser).then((response) => {
       window.location = '/'
     })
+    // axios.post('http://localhost:4000/auth/signup', newUser).then((response) => {
+    //   window.location = '/'
+    // })
   }
   render() {
     return (

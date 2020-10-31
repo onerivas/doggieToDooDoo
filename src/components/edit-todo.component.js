@@ -15,8 +15,8 @@ export default class EditTodo extends Component {
         }
     }
     componentDidMount = () => {
-      // console.log(`http://localhost:4000/todos/${this.props.match.params.id}`);
-        axios.get('http://localhost:4000/pets/'+this.props.match.params.id)
+        axios.get('https://doggie-to-doodoo-back-end.herokuapp.com/pets/'+this.props.match.params.id)
+        // axios.get('http://localhost:4000/pets/'+this.props.match.params.id)
             .then(response => {
               console.log(response.data);
                 this.setState({

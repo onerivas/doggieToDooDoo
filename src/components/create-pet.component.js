@@ -25,7 +25,9 @@ export default class CreatePet extends Component {
     }
     console.log(this.props.user_id);
     console.log(newPet);
-    axios.post('http://localhost:4000/pets', newPet).then((response) => {
+    axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/pets', newPet)
+    // axios.post('http://localhost:4000/pets', newPet)
+    .then((response) => {
       window.location = '/';
     })
   }

@@ -44,9 +44,9 @@ export default class TodosList extends Component {
     this.state = { pets: [] };
   }
   componentDidMount = () => {
-    // axios.get('https://doggie-to-doodoo-back-end.herokuapp.com/pets')
-    console.log(this.props.user_id);
-    axios.get('http://localhost:4000/pets', {params:{_id:this.props.user_id}})
+
+    axios.get('https://doggie-to-doodoo-back-end.herokuapp.com/pets', {params:{_id:this.props.user_id}})
+    // axios.get('http://localhost:4000/pets', {params:{_id:this.props.user_id}})
     .then((response) => {
       console.log(response.data);
       this.setState({ pets: response.data});
@@ -65,7 +65,9 @@ export default class TodosList extends Component {
           console.log(todo.todo_completed);
           const updatedPet = currentPet
           console.log(updatedPet);
-          axios.post(`http://localhost:4000/pets/${currentPet._id}`, updatedPet).then((response) => {
+          axios.post(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${currentPet._id}`, updatedPet)
+          // axios.post(`http://localhost:4000/pets/${currentPet._id}`, updatedPet)
+            .then((response) => {
             console.log(this.state.pets);
             this.setState({
               pets:this.state.pets
@@ -84,7 +86,9 @@ export default class TodosList extends Component {
           currentPet.petTodos.splice(index, 1)
           console.log(currentPet);
           const updatedPet = currentPet
-          axios.post(`http://localhost:4000/pets/${pet_id}`, updatedPet).then((response) => {
+          axios.post(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${pet_id}`, updatedPet)
+          // axios.post(`http://localhost:4000/pets/${pet_id}`, updatedPet)
+            .then((response) => {
             this.setState({
               pets:this.state.pets
             })
