@@ -27,7 +27,7 @@ export default class CreateUser extends Component {
       email: this.state.usernameField,
       password: this.state.passwordField
     }
-    axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/', newUser).then((response) => {
+    axios.post('http://doggie-to-doodoo-back-end.herokuapp.com/auth/signup', newUser).then((response) => {
       window.location = '/'
     })
     // axios.post('http://localhost:4000/auth/signup', newUser).then((response) => {
@@ -38,7 +38,7 @@ export default class CreateUser extends Component {
     return (
       <div>
       <div >
-        <form onSubmit={ this.onSubmit }>
+        <form onSubmit={ this.onSubmitSignUp }>
           <div className = 'form-group'>
             <label>E-mail: </label>
             <input type = 'text' className='form-control' value={this.state.usernameField} onChange={ this.onChangeUsername }/>

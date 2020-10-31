@@ -63,13 +63,18 @@ export default class EditTodo extends Component {
      console.log(updatedPet);
      console.log(updatedPet.pet_id);
 
-     axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet).then((response) => {
+     axios.post(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${this.props.match.params.id}`, updatedPet)
+     // axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet)
+       .then((response) => {
        window.location = '/';
      })
    }
    deletePet = (event) => {
      event.preventDefault();
-     axios.delete(`http://localhost:4000/pets/${this.props.match.params.id}`).then((response) => {
+     axios.delete(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${this.props.match.params.id}`)
+       .then((response) => {
+     // axios.delete(`http://localhost:4000/pets/${this.props.match.params.id}`)
+     //   .then((response) => {
        window.location = '/';
      })
    }
@@ -88,7 +93,8 @@ export default class EditTodo extends Component {
      event.preventDefault();
      console.log(this.state.todo_id);
      console.log(`/todo/${this.state.todo_id}`);
-     axios.delete(`https://localhost:4000/pets/${this.state.todo_id}`)
+     axios.delete(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${this.state.todo_id}`)
+     // axios.delete(`https://localhost:4000/pets/${this.state.todo_id}`)
      .then((response) => {
        window.location = '/'
      })
