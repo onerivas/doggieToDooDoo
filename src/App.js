@@ -48,8 +48,8 @@ class App extends Component {
       password: this.state.passwordField
     }
     console.log(this.state.usernameField);
-    axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/auth/login', user)
-    // axios.post('http://localhost:4000/auth/login', user)
+    // axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/auth/login', user)
+    axios.post('http://localhost:4000/auth/login', user)
     .then((response) => {
       console.log(response.data);
       console.log(response.data.body._id);
