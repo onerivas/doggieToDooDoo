@@ -20,7 +20,7 @@ export default class CreateUser extends Component {
       passwordField: event.target.value
     })
   }
-  onSubmit = (event) => {
+  onSubmitSignUp = (event) => {
     event.preventDefault();
     console.log('Form submitted');
     const newUser = {
@@ -34,6 +34,7 @@ export default class CreateUser extends Component {
   render() {
     return (
       <div>
+      <div >
         <form onSubmit={ this.onSubmit }>
           <div className = 'form-group'>
             <label>E-mail: </label>
@@ -42,9 +43,10 @@ export default class CreateUser extends Component {
             <input type= 'password' className='form-control' value={this.state.passwordField} onChange={this.onChangePassword}/>
           </div>
           <div className='form-group'>
-            <input type='submit' value='Sign-up' className='btn btn-info'/>
+            <button type='submit' value='Sign-up' className='btn btn-info'>Sign-up</button>
           </div>
         </form>
+      </div>
       </div>
     )
   }

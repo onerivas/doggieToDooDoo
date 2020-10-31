@@ -119,7 +119,7 @@ export default class EditTodo extends Component {
               })}
               <div>
                 <form onSubmit={this.deletePet} >
-                  <button type='submit' className='btn btn-sm btn-info my-3'>Delete Pet</button>
+                  <button type='submit' className='btn btn-sm btn-info my-3'>Remove Pet</button>
                 </form>
               </div>
             </div>

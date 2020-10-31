@@ -116,7 +116,7 @@ export default class TodosList extends Component {
   render() {
     return (
       <div className='list justify-content-center'>
-        <div className='row row-cols-md-3 '>
+        <div className='row row-cols-lg-3 '>
           { this.PetsList() }
         </div>
 

@@ -63,14 +63,14 @@ class App extends Component {
     })
   }
   logOut = () => {
-    console.log('logged out');
+    localStorage.clear();
     this.setState({
       usernameField: '',
       passwordField: '',
       token: '',
       user_id: ''
     })
-    localStorage.clear();
+    window.location='/';
   }
   render() {
     return (
@@ -90,17 +90,17 @@ class App extends Component {
             </div>
           </nav>
           <br/>
-          { !this.state.user_id ? (<Route path="/" component={CreateUser} />) : ('') }
           { !this.state.user_id ? <Route path="/" render={(props) =>
             <LoginUser {...props} logOut={ this.logOut } login={ this.login } onChangeUsername={ this.onChangeUsername } onChangePassword={ this.onChangePassword }
             />} /> : ('')}
+            { !this.state.user_id ? (<Route path="/" component={CreateUser} />) : ('') }
           { this.state.user_id ? <Route exact path="/" render={(props) =>
             <TodosList {...props} user_id={ this.state.user_id } token={ this.state.token }
           />} /> : ('') }
           <Route path="/edit/:id" render={(props) =>
             <EditTodo {...props} user_id={ this.state.user_id } token={ this.state.token }
           />} />
-          <Route path="/create" render={(props) =>
+          <Route exact path="/create" render={(props) =>
             <CreatePet {...props} user_id={ this.state.user_id } token={ this.state.token }
           />} />
           <Route path="/add/:id" render={(props) =>
