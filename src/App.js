@@ -92,10 +92,10 @@ class App extends Component {
             </div>
           </nav>
           <br/>
-          { !this.state.user_id ? <Route path="/" render={(props) =>
+          { !this.state.user_id ? <Route exact path="/" render={(props) =>
             <LoginUser {...props} logOut={ this.logOut } login={ this.login } onChangeUsername={ this.onChangeUsername } onChangePassword={ this.onChangePassword }
             />} /> : ('')}
-            { !this.state.user_id ? (<Route path="/" component={CreateUser} />) : ('') }
+            { !this.state.user_id ? (<Route exact path="/" component={CreateUser} />) : ('') }
           { this.state.user_id ? <Route exact path="/" render={(props) =>
             <TodosList {...props} user_id={ this.state.user_id } token={ this.state.token }
           />} /> : ('') }
