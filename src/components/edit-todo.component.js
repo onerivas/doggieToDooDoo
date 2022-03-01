@@ -34,12 +34,6 @@ export default class EditTodo extends Component {
            todo_description: event.target.value
        });
    }
-
-   // onChangeTodoCompleted = (event) => {
-   //     this.setState({
-   //         todo_completed: !this.state.todo_completed
-   //     });
-   // }
    updateTodo = (index, event) => {
      console.log(index);
      event.preventDefault()
@@ -64,7 +58,6 @@ export default class EditTodo extends Component {
      console.log(updatedPet.pet_id);
 
      axios.post(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${this.props.match.params.id}`, updatedPet)
-     // axios.post(`http://localhost:4000/pets/${this.props.match.params.id}`, updatedPet)
        .then((response) => {
        window.location = '/';
      })
@@ -73,28 +66,14 @@ export default class EditTodo extends Component {
      event.preventDefault();
      axios.delete(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${this.props.match.params.id}`)
        .then((response) => {
-     // axios.delete(`http://localhost:4000/pets/${this.props.match.params.id}`)
-     //   .then((response) => {
        window.location = '/';
      })
    }
-   // onSubmit = (event) => {
-   //     event.preventDefault();
-   //     const obj = {
-   //       pet_id: this.state.pet_id,
-   //       petName: this.state.petName,
-   //       petTodos: this.state.petTodos
-   //     };
-   //     console.log(obj);
-   //     // axios.post('https://localhost:4000/'+this.props.match.params.id, obj)
-   //     //     .then(response => window.location = '/')
-   // }
    deleteTodo = (event) => {
      event.preventDefault();
      console.log(this.state.todo_id);
      console.log(`/todo/${this.state.todo_id}`);
      axios.delete(`https://doggie-to-doodoo-back-end.herokuapp.com/pets/${this.state.todo_id}`)
-     // axios.delete(`https://localhost:4000/pets/${this.state.todo_id}`)
      .then((response) => {
        window.location = '/'
      })
