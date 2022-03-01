@@ -30,9 +30,6 @@ export default class CreateUser extends Component {
     axios.post('http://doggie-to-doodoo-back-end.herokuapp.com/auth/signup', newUser).then((response) => {
       window.location = '/'
     })
-    // axios.post('http://localhost:4000/auth/signup', newUser).then((response) => {
-    //   window.location = '/'
-    // })
   }
   render() {
     return (
