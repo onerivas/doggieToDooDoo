@@ -26,11 +26,9 @@ class App extends Component {
     this.setState({user_id:localStorage.user_id})
     localStorage.getItem('token');
     this.setState({token:localStorage.token})
-    console.log(this.state.user_id);
 
   }
   onChangeUsername = (event) => {
-    console.log(event.target.value);
     this.setState({
       usernameField: event.target.value
     });
@@ -42,26 +40,19 @@ class App extends Component {
   }
   login = (event) => {
     event.preventDefault();
-    console.log('Form submitted');
     const user = {
       email: this.state.usernameField,
       password: this.state.passwordField
     }
-    console.log(this.state.usernameField);
     axios.post('https://doggie-to-doodoo-back-end.herokuapp.com/auth/login', user)
     // axios.post('http://localhost:4000/auth/login', user)
     .then((response) => {
-      console.log(response.data);
-      console.log(response.data.body._id);
-      console.log(response.data.token);
       this.setState({
         token: response.data.token,
         user_id: response.data.body._id
       })
       localStorage.setItem('token', this.state.token)
       localStorage.setItem('user_id', this.state.user_id)
-      console.log(this.state.token);
-      console.log(localStorage);
     })
   }
   logOut = () => {
